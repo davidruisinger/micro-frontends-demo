@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { theme } from './_utils'
+
 interface PokemonListResponse {
   count: number
   next: string | null
@@ -12,6 +14,13 @@ interface PokemonListResponseItem {
   name: string
   url: string
 }
+
+const Wrapper = styled.div`
+  background-color: ${theme.teamColor};
+  border-radius: 4px;
+  margin: 8px;
+  padding: 8px;
+`
 
 const ListItem = styled.li`
   padding: 2px 0;
@@ -44,12 +53,14 @@ export const PokemonList: React.FunctionComponent = () => {
   if (error) return <p>{error.message || 'unknown error'}</p>
 
   return (
-    <ul>
-      {data.results.map((p) => (
-        <ListItem key={p.name}>
-          <a href={`/details/${p.name}`}>{p.name}</a>
-        </ListItem>
-      ))}
-    </ul>
+    <Wrapper>
+      <ul>
+        {data.results.map((p) => (
+          <ListItem key={p.name}>
+            <a href={`/details/${p.name}`}>{p.name}</a>
+          </ListItem>
+        ))}
+      </ul>
+    </Wrapper>
   )
 }

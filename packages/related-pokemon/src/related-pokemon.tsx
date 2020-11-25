@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { theme } from './_utils'
+
 interface RelatedPokemonProps {
   name: string
 }
@@ -28,6 +30,13 @@ interface PokemonListResponseItem {
   name: string
   url: string
 }
+
+const Wrapper = styled.div`
+  background-color: ${theme.teamColor};
+  border-radius: 4px;
+  margin: 8px;
+  padding: 8px;
+`
 
 const ListItem = styled.li`
   padding: 2px 0;
@@ -73,7 +82,7 @@ export const RelatedPokemon: React.FunctionComponent<RelatedPokemonProps> = ({
   if (error) return <p>{error.message || 'unknown error'}</p>
 
   return (
-    <>
+    <Wrapper>
       <h2>You may also like:</h2>
       <ul>
         {recData.results.map(
@@ -86,6 +95,6 @@ export const RelatedPokemon: React.FunctionComponent<RelatedPokemonProps> = ({
             null
         )}
       </ul>
-    </>
+    </Wrapper>
   )
 }

@@ -1,22 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { DB, Event } from './_utils'
+import { DB, Event, theme } from './_utils'
 
 const Wrapper = styled.div`
+  background-color: ${theme.teamColor};
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 8px;
+  padding: 8px;
   position: relative;
 `
 
 const Details = styled.div`
-  background-color: lightgray;
-  left: 0;
+  background-color: ${theme.teamColor};
   border-radius: 4px;
-  padding: 8px;
-  position: absolute;
-  top: 0;
-  width: 100%;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
     0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  left: 0;
+  padding: 8px;
+  position: absolute;
+  top: 30px;
+  width: 100%;
 `
 
 const ListItem = styled.li`

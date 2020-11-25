@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  align-items: stretch;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
 `
 
 const Content = styled.div`
@@ -15,9 +15,6 @@ const Content = styled.div`
 
 const Aside = styled.div`
   flex: 0 0 300px;
-  height: 200px;
-  background-color: lightgray;
-  padding: 8px;
 `
 
 export const Details: React.FunctionComponent = () => {

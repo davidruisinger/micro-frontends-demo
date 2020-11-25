@@ -1,14 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { DB, Event } from './_utils'
+import { DB, Event, theme } from './_utils'
 
 interface PokedexCatchBtnProps {
   name: string
 }
 
 const Button = styled.button`
-  padding: 8px;
+  background-color: ${theme.teamColor};
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px;
+  outline: none;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+
+  &:active {
+    opacity: 0.75;
+  }
 `
 export const PokedexCatchBtn: React.FunctionComponent<PokedexCatchBtnProps> = ({
   name,

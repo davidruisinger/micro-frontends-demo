@@ -3,16 +3,13 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Details } from './details'
-import { Home } from './home'
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 1000px;
+  background-color: antiquewhite;
   margin: 20px auto;
-`
-
-const PokedexContainer = styled.div`
-  padding: 8px 0;
+  max-width: 1000px;
+  width: 100%;
+  padding: 8px;
 `
 
 export const App: React.FunctionComponent = () => {
@@ -27,15 +24,13 @@ export const App: React.FunctionComponent = () => {
           </ul>
         </nav>
         <h1>Gotta catch &apos;em all!</h1>
-        <PokedexContainer>
-          <pokedex-count />
-        </PokedexContainer>
+        <pokedex-count />
         <Switch>
           <Route path="/details/:name">
             <Details />
           </Route>
           <Route path="/">
-            <Home />
+            <pokemon-list />
           </Route>
         </Switch>
       </Wrapper>
