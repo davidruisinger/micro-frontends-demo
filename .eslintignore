@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+# Build & cachae
+dist
+.cache
+
+# Git
+.gitignore

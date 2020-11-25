@@ -1,0 +1,25 @@
+{
+  "name": "@mfe-demo/recommendations",
+  "author": "David Ruisinger <david.ruisinger@gmail.com>",
+  "version": "1.0.0",
+  "main": "dist/mfe-recommendations.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "clear": "rimraf ./dist && rimraf ./.parcel-cache",
+    "dev": "yarn clear && parcel serve --port 3003 --cache-dir ./.parcel-cache ./mfe-recommendations.tsx",
+    "build": "yarn clear && parcel build ./mfe-recommendations.tsx"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.4",
+    "parcel": "^2.0.0-beta.1",
+    "rimraf": "^3.0.2"
+  }
+}
