@@ -17,24 +17,20 @@ const Aside = styled.div`
   flex: 0 0 300px;
   height: 200px;
   background-color: lightgray;
+  padding: 8px;
 `
 
 export const Details: React.FunctionComponent = () => {
   const { name } = useParams<{ name: string }>()
 
-  React.useEffect(() => {
-    window.renderDetails('content', name)
-    window.renderRecommendations('aside', name)
-    return () => {
-      window.unmountDetails('content')
-      window.unmountRecommendations('aside')
-    }
-  }, [name])
-
   return (
     <Wrapper>
-      <Content id="content" />
-      <Aside id="aside" />
+      <Content>
+        <pokemon-details name={name} />
+      </Content>
+      <Aside>
+        <related-pokemon name={name} />
+      </Aside>
     </Wrapper>
   )
 }

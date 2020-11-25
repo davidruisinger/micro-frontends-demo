@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface PokeListResponse {
+interface PokemonListResponse {
   count: number
   next: string | null
   previous: string | null
-  results: PokeListResponseItem[]
+  results: PokemonListResponseItem[]
 }
 
-interface PokeListResponseItem {
+interface PokemonListResponseItem {
   name: string
   url: string
 }
@@ -18,8 +18,8 @@ const ListItem = styled.li`
   text-transform: capitalize;
 `
 
-export const Home: React.FunctionComponent = () => {
-  const [data, setData] = React.useState<PokeListResponse | null>(null)
+export const PokemonList: React.FunctionComponent = () => {
+  const [data, setData] = React.useState<PokemonListResponse | null>(null)
   const [error, setError] = React.useState(null)
 
   React.useEffect(() => {
@@ -31,7 +31,7 @@ export const Home: React.FunctionComponent = () => {
             'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20'
           )
           const json = await response.json()
-          setData(json as PokeListResponse)
+          setData(json as PokemonListResponse)
         }
         fetchData()
       } catch (e) {

@@ -1,14 +1,14 @@
 {
-  "name": "@mfe-demo/details",
+  "name": "@mfe-demo/pokemon-list",
   "author": "David Ruisinger <david.ruisinger@gmail.com>",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/mfe-pokemon-list.js",
   "private": true,
   "license": "MIT",
   "scripts": {
     "clear": "rimraf ./dist && rimraf ./.parcel-cache",
-    "dev": "yarn clear && parcel serve --port 3002 --cache-dir ./.parcel-cache ./mfe-details.tsx",
-    "build": "yarn clear && parcel build ./mfe-details.tsx"
+    "dev": "yarn clear && parcel serve --port 3001 --cache-dir ./.parcel-cache ./mfe-pokemon-list.tsx",
+    "build": "yarn clear && parcel build ./mfe-pokemon-list.tsx"
   },
   "dependencies": {
     "react": "^17.0.1",

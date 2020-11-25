@@ -1,14 +1,14 @@
 {
-  "name": "@mfe-demo/recommendations",
+  "name": "@mfe-demo/related-pokemon",
   "author": "David Ruisinger <david.ruisinger@gmail.com>",
   "version": "1.0.0",
-  "main": "dist/mfe-recommendations.js",
+  "main": "dist/mfe-related-pokemon.js",
   "private": true,
   "license": "MIT",
   "scripts": {
     "clear": "rimraf ./dist && rimraf ./.parcel-cache",
-    "dev": "yarn clear && parcel serve --port 3003 --cache-dir ./.parcel-cache ./mfe-recommendations.tsx",
-    "build": "yarn clear && parcel build ./mfe-recommendations.tsx"
+    "dev": "yarn clear && parcel serve --port 3003 --cache-dir ./.parcel-cache ./mfe-related-pokemon.tsx",
+    "build": "yarn clear && parcel build ./mfe-related-pokemon.tsx"
   },
   "dependencies": {
     "react": "^17.0.1",

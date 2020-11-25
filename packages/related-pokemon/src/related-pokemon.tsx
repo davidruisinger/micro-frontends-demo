@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface RecommendationsProps {
+interface RelatedPokemonProps {
   name: string
 }
 
-interface PokeDetailsResponse {
+interface PokemonDetailsResponse {
   name: string
   id: number
   sprites: {
@@ -17,14 +17,14 @@ interface PokeDetailsResponse {
   }
 }
 
-interface PokeListResponse {
+interface PokemonListResponse {
   count: number
   next: string | null
   previous: string | null
-  results: PokeListResponseItem[]
+  results: PokemonListResponseItem[]
 }
 
-interface PokeListResponseItem {
+interface PokemonListResponseItem {
   name: string
   url: string
 }
@@ -34,14 +34,14 @@ const ListItem = styled.li`
   text-transform: capitalize;
 `
 
-export const Recommendations: React.FunctionComponent<RecommendationsProps> = ({
+export const RelatedPokemon: React.FunctionComponent<RelatedPokemonProps> = ({
   name,
 }) => {
   const [
     detailsData,
     setDetailsData,
-  ] = React.useState<PokeDetailsResponse | null>(null)
-  const [recData, setRecData] = React.useState<PokeListResponse | null>(null)
+  ] = React.useState<PokemonDetailsResponse | null>(null)
+  const [recData, setRecData] = React.useState<PokemonListResponse | null>(null)
   const [error, setError] = React.useState(null)
 
   React.useEffect(() => {
@@ -59,8 +59,8 @@ export const Recommendations: React.FunctionComponent<RecommendationsProps> = ({
             `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=6`
           )
           const json = await response.json()
-          setDetailsData(detailsJson as PokeDetailsResponse)
-          setRecData(json as PokeListResponse)
+          setDetailsData(detailsJson as PokemonDetailsResponse)
+          setRecData(json as PokemonListResponse)
         }
         fetchData()
       } catch (e) {

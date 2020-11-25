@@ -7,12 +7,9 @@ const Content = styled.div`
 `
 
 export const Home: React.FunctionComponent = () => {
-  React.useEffect(() => {
-    window.renderHome('content')
-    return () => {
-      window.unmountHome('content')
-    }
-  }, [])
-
-  return <Content id="content" />
+  return (
+    <Content>
+      <pokemon-list />
+    </Content>
+  )
 }

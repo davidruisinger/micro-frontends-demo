@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const LOCAL_STORAGE_KEY = 'pokedex:items'
+import { DB, Event } from './_utils'
 
 const Wrapper = styled.div`
   position: relative;
@@ -24,45 +24,23 @@ const ListItem = styled.li`
   text-transform: capitalize;
 `
 
-export const Pokedex: React.FunctionComponent = () => {
+export const PokedexCount: React.FunctionComponent = () => {
   const [pokemons, setPokemons] = React.useState<Record<string, number>>({})
   const [detailsVisible, setDetailsVisible] = React.useState<boolean>(false)
 
-  const addPokemon = React.useCallback(
-    (
-      e: CustomEvent<{
-        name: string
-      }>
-    ) => {
-      const name = e.detail.name
-      if (!name) return
-      setPokemons((curr) => {
-        const updatedItems = {
-          ...curr,
-          [name]: (curr[name] || 0) + 1,
-        }
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems))
-        return updatedItems
-      })
-    },
-    [setPokemons]
-  )
+  const addedPokemonHandler = React.useCallback(() => {
+    setPokemons(DB.getPokedex())
+  }, [])
 
   React.useEffect(() => {
-    window.addEventListener('pokedex:add', addPokemon)
+    window.addEventListener(Event.POKEDEX_ADDED, addedPokemonHandler)
     return () => {
-      window.removeEventListener('pokedex:add', addPokemon)
+      window.removeEventListener(Event.POKEDEX_ADDED, addedPokemonHandler)
     }
-  }, [addPokemon])
+  }, [addedPokemonHandler])
 
   React.useEffect(() => {
-    try {
-      const loadedItems = localStorage.getItem(LOCAL_STORAGE_KEY)
-      if (!loadedItems) return
-      setPokemons(JSON.parse(loadedItems))
-    } catch (e) {
-      console.error(`Failed to load items from localStorage ${e}`)
-    }
+    setPokemons(DB.getPokedex())
   }, [])
 
   return (
@@ -99,11 +77,8 @@ export const Pokedex: React.FunctionComponent = () => {
   }
 
   function releaseAll(): void {
+    DB.clearPokedex()
+    setPokemons(DB.getPokedex())
     setDetailsVisible(false)
-    setPokemons(() => {
-      const updatedItems = {}
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedItems))
-      return updatedItems
-    })
   }
 }

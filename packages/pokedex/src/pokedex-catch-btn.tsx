@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { DB, Event } from './_utils'
+
 interface PokedexCatchBtnProps {
   name: string
 }
@@ -16,9 +18,10 @@ export const PokedexCatchBtn: React.FunctionComponent<PokedexCatchBtnProps> = ({
   function catchPokemon(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
-    const catchEvent = new CustomEvent('pokedex:add', {
+    DB.addToPokedex(name)
+    const catchEvent = new CustomEvent(Event.POKEDEX_ADDED, {
       bubbles: true,
-      detail: { name },
+      composed: true, // Important to be catched outside of shadow dom
     })
     e.target.dispatchEvent(catchEvent)
   }

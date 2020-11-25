@@ -16,13 +16,6 @@ const PokedexContainer = styled.div`
 `
 
 export const App: React.FunctionComponent = () => {
-  React.useEffect(() => {
-    window.renderPokedex('pokedexContainer')
-    return () => {
-      window.unmountPokedex('pokedexContainer')
-    }
-  }, [])
-
   return (
     <Router>
       <Wrapper>
@@ -34,7 +27,9 @@ export const App: React.FunctionComponent = () => {
           </ul>
         </nav>
         <h1>Gotta catch &apos;em all!</h1>
-        <PokedexContainer id="pokedexContainer" />
+        <PokedexContainer>
+          <pokedex-count />
+        </PokedexContainer>
         <Switch>
           <Route path="/details/:name">
             <Details />

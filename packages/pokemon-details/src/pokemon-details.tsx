@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface DetailsProps {
+interface PokemonDetailsProps {
   name: string
 }
 
@@ -32,7 +32,9 @@ const ButtonContainer = styled.div`
   align-self: flex-end;
 `
 
-export const Details: React.FunctionComponent<DetailsProps> = ({ name }) => {
+export const PokemonDetails: React.FunctionComponent<PokemonDetailsProps> = ({
+  name,
+}) => {
   const [data, setData] = React.useState<PokeDetailsResponse | null>(null)
   const [error, setError] = React.useState(null)
 
@@ -54,15 +56,6 @@ export const Details: React.FunctionComponent<DetailsProps> = ({ name }) => {
     }
   }, [data, name])
 
-  React.useEffect(() => {
-    if (data) {
-      window.renderPokedexCatchBtn('catchBtnContainer', data.name)
-      return () => {
-        window.unmountPokedexCatchBtn('catchBtnContainer')
-      }
-    }
-  }, [data])
-
   if (!data) return <p>Loading...</p>
   if (error) return <p>{error.message || 'unknown error'}</p>
 
@@ -70,7 +63,9 @@ export const Details: React.FunctionComponent<DetailsProps> = ({ name }) => {
     <Wrapper>
       <img src={data.sprites.other.dream_world.front_default} />
       <Name>{data.name}</Name>
-      <ButtonContainer id="catchBtnContainer" />
+      <ButtonContainer>
+        <pokedex-catch-btn name={data.name} />
+      </ButtonContainer>
     </Wrapper>
   )
 }

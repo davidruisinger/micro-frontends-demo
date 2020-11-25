@@ -1,31 +1,84 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { StyleSheetManager } from 'styled-components'
 
-import { Pokedex } from './src/pokedex'
 import { PokedexCatchBtn } from './src/pokedex-catch-btn'
+import { PokedexCount } from './src/pokedex-count'
 
-declare global {
-  interface Window {
-    renderPokedex: (containerId: string) => void
-    renderPokedexCatchBtn: (containerId: string, name: string) => void
-    unmountPokedex: (containerId: string) => void
-    unmountPokedexCatchBtn: (containerId: string) => void
+class WCPokedexCount extends HTMLElement {
+  private css: HTMLElement
+  private root: HTMLDivElement
+
+  constructor() {
+    super()
+
+    // Create component root div and css insertion within shadow dom
+    const shadow = this.attachShadow({ mode: 'open' })
+    this.css = document.createElement('noscript')
+    this.root = document.createElement('div')
+    shadow.appendChild(this.css)
+    shadow.appendChild(this.root)
+  }
+
+  connectedCallback(): void {
+    this.renderComponent()
+  }
+
+  disconnectedCallback(): void {
+    ReactDOM.unmountComponentAtNode(this.root)
+  }
+
+  renderComponent(): void {
+    ReactDOM.render(
+      <StyleSheetManager target={this.css}>
+        <PokedexCount />
+      </StyleSheetManager>,
+      this.root
+    )
   }
 }
+window.customElements.define('pokedex-count', WCPokedexCount)
 
-window.renderPokedex = (containerId: string) => {
-  ReactDOM.render(<Pokedex />, document.getElementById(containerId))
-}
-window.renderPokedexCatchBtn = (containerId: string, name: string) => {
-  ReactDOM.render(
-    <PokedexCatchBtn name={name} />,
-    document.getElementById(containerId)
-  )
-}
+class WCPokedexCatchBtn extends HTMLElement {
+  private css: HTMLElement
+  private root: HTMLDivElement
 
-window.unmountPokedex = (containerId: string) => {
-  ReactDOM.unmountComponentAtNode(document.getElementById(containerId))
+  static get observedAttributes(): string[] {
+    return ['name']
+  }
+
+  constructor() {
+    super()
+
+    // Create component root div and css insertion within shadow dom
+    const shadow = this.attachShadow({ mode: 'open' })
+    this.css = document.createElement('noscript')
+    this.root = document.createElement('div')
+    shadow.appendChild(this.css)
+    shadow.appendChild(this.root)
+  }
+
+  connectedCallback(): void {
+    this.renderComponent()
+  }
+
+  disconnectedCallback(): void {
+    ReactDOM.unmountComponentAtNode(this.root)
+  }
+
+  attributeChangedCallback(): void {
+    this.renderComponent()
+  }
+
+  renderComponent(): void {
+    const name = this.getAttribute('name')
+
+    ReactDOM.render(
+      <StyleSheetManager target={this.css}>
+        <PokedexCatchBtn name={name} />
+      </StyleSheetManager>,
+      this.root
+    )
+  }
 }
-window.unmountPokedexCatchBtn = (containerId: string) => {
-  ReactDOM.unmountComponentAtNode(document.getElementById(containerId))
-}
+window.customElements.define('pokedex-catch-btn', WCPokedexCatchBtn)
