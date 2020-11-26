@@ -15,7 +15,7 @@ export const Page: React.FunctionComponent = ({ children }) => {
   return (
     <>
       <Head>
-        <script crossOrigin="" src="http://localhost:3004/mfe-pokedex.js" />
+        <script crossOrigin="" src="http://localhost:3001/mfe-pokedex.js" />
       </Head>
       <Wrapper>
         <nav>

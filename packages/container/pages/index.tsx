@@ -9,7 +9,7 @@ const Home: React.FunctionComponent = () => {
       <Head>
         <script
           crossOrigin=""
-          src="http://localhost:3001/mfe-pokemon-list.js"
+          src="http://localhost:3003/mfe-pokemon-list.js"
         />
       </Head>
       <Page>

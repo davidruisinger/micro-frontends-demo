@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "clear": "rimraf ./dist && rimraf ./.next",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"

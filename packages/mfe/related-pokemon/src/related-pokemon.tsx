@@ -1,4 +1,4 @@
-import { fetchRelatedPokemon, FetchRelatedPokemonRsponse } from '@mfe-demo/api'
+import { fetchRelatedPokemon, FetchRelatedPokemonResponse } from '@mfe-demo/api'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -26,7 +26,7 @@ export const RelatedPokemon: React.FunctionComponent<RelatedPokemonProps> = ({
   const [
     recData,
     setRecData,
-  ] = React.useState<FetchRelatedPokemonRsponse | null>(null)
+  ] = React.useState<FetchRelatedPokemonResponse | null>(null)
   const [error, setError] = React.useState(null)
 
   React.useEffect(() => {

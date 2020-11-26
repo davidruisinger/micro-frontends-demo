@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clear": "rimraf ./dist && rimraf ./.parcel-cache",
-    "dev": "yarn clear && parcel serve --port 3003 --cache-dir ./.parcel-cache ./mfe-related-pokemon.tsx",
+    "dev": "yarn clear && parcel serve --port 3004 --cache-dir ./.parcel-cache ./mfe-related-pokemon.tsx",
     "build": "yarn clear && parcel build ./mfe-related-pokemon.tsx"
   },
   "dependencies": {

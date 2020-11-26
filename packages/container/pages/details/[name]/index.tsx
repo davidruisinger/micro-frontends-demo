@@ -31,6 +31,10 @@ const Details: React.FunctionComponent = () => {
           crossOrigin=""
           src="http://localhost:3002/mfe-pokemon-details.js"
         />
+        <script
+          crossOrigin=""
+          src="http://localhost:3004/mfe-related-pokemon.js"
+        />
       </Head>
       <Page>
         <Wrapper>
