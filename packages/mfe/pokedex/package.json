@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-demo/pokedex",
+  "name": "@mfe-demo/mfe-pokedex",
   "author": "David Ruisinger <david.ruisinger@gmail.com>",
   "version": "1.0.0",
   "main": "dist/mfe-pokedex.js",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clear": "rimraf ./dist && rimraf ./.parcel-cache",
-    "dev": "yarn clear && parcel serve --port 3004 --cache-dir ./.parcel-cache ./mfe-pokedex.tsx",
+    "dev": "yarn clear && parcel serve --port 3001 --cache-dir ./.parcel-cache ./mfe-pokedex.tsx",
     "build": "yarn clear && parcel build ./mfe-pokedex.tsx"
   },
   "dependencies": {

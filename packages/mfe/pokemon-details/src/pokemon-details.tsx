@@ -1,3 +1,4 @@
+import { fetchPokemonDetails, FetchPokemonDetailsResponse } from '@mfe-demo/api'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -5,18 +6,6 @@ import { theme } from './_utils'
 
 interface PokemonDetailsProps {
   name: string
-}
-
-interface PokeDetailsResponse {
-  name: string
-  id: number
-  sprites: {
-    other: {
-      dream_world: {
-        front_default: string
-      }
-    }
-  }
 }
 
 const Wrapper = styled.div`
@@ -41,7 +30,9 @@ const ButtonContainer = styled.div`
 export const PokemonDetails: React.FunctionComponent<PokemonDetailsProps> = ({
   name,
 }) => {
-  const [data, setData] = React.useState<PokeDetailsResponse | null>(null)
+  const [data, setData] = React.useState<FetchPokemonDetailsResponse | null>(
+    null
+  )
   const [error, setError] = React.useState(null)
 
   React.useEffect(() => {
@@ -49,11 +40,8 @@ export const PokemonDetails: React.FunctionComponent<PokemonDetailsProps> = ({
       setError(null)
       try {
         async function fetchData(): Promise<void> {
-          const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon/${name}`
-          )
-          const json = await response.json()
-          setData(json as PokeDetailsResponse)
+          const data = await fetchPokemonDetails({ name })
+          setData(data)
         }
         fetchData()
       } catch (e) {

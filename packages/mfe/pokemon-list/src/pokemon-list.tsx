@@ -1,19 +1,8 @@
+import { fetchPokemonList, FetchPokemonListResponseItem } from '@mfe-demo/api'
 import React from 'react'
 import styled from 'styled-components'
 
 import { theme } from './_utils'
-
-interface PokemonListResponse {
-  count: number
-  next: string | null
-  previous: string | null
-  results: PokemonListResponseItem[]
-}
-
-interface PokemonListResponseItem {
-  name: string
-  url: string
-}
 
 const Wrapper = styled.div`
   background-color: ${theme.teamColor};
@@ -28,7 +17,9 @@ const ListItem = styled.li`
 `
 
 export const PokemonList: React.FunctionComponent = () => {
-  const [data, setData] = React.useState<PokemonListResponse | null>(null)
+  const [data, setData] = React.useState<FetchPokemonListResponseItem | null>(
+    null
+  )
   const [error, setError] = React.useState(null)
 
   React.useEffect(() => {
@@ -36,11 +27,8 @@ export const PokemonList: React.FunctionComponent = () => {
       setError(null)
       try {
         async function fetchData(): Promise<void> {
-          const response = await fetch(
-            'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20'
-          )
-          const json = await response.json()
-          setData(json as PokemonListResponse)
+          const data = await fetchPokemonList()
+          setData(data)
         }
         fetchData()
       } catch (e) {
