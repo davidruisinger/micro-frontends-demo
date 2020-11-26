@@ -16,4 +16,5 @@ yarn-error.log*
 .cache
 .parcel-cache
 .tmp
+.next
 dist
