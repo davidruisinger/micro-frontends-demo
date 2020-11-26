@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-demo/pokemon-list",
+  "name": "@mfe-demo/mfe-pokemon-list",
   "author": "David Ruisinger <david.ruisinger@gmail.com>",
   "version": "1.0.0",
   "main": "dist/mfe-pokemon-list.js",
@@ -11,6 +11,7 @@
     "build": "yarn clear && parcel build ./mfe-pokemon-list.tsx"
   },
   "dependencies": {
+    "@mfe-demo/api": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"

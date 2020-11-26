@@ -1,0 +1,18 @@
+{
+  "name": "@mfe-demo/api",
+  "author": "David Ruisinger <david.ruisinger@gmail.com>",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "clear": "rimraf ./dist && rimraf ./.parcel-cache",
+    "dev": "yarn clear && parcel watch --cache-dir ./.parcel-cache ./index.ts",
+    "build": "yarn clear && parcel build ./index.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1",
+    "rimraf": "^3.0.2"
+  }
+}

@@ -1,16 +1,17 @@
 {
-  "name": "@mfe-demo/related-pokemon",
+  "name": "@mfe-demo/mfe-pokemon-details",
   "author": "David Ruisinger <david.ruisinger@gmail.com>",
   "version": "1.0.0",
-  "main": "dist/mfe-related-pokemon.js",
+  "main": "dist/mfe-pokemon-details.js",
   "private": true,
   "license": "MIT",
   "scripts": {
     "clear": "rimraf ./dist && rimraf ./.parcel-cache",
-    "dev": "yarn clear && parcel serve --port 3003 --cache-dir ./.parcel-cache ./mfe-related-pokemon.tsx",
-    "build": "yarn clear && parcel build ./mfe-related-pokemon.tsx"
+    "dev": "yarn clear && parcel serve --port 3002 --cache-dir ./.parcel-cache ./mfe-pokemon-details.tsx",
+    "build": "yarn clear && parcel build ./mfe-pokemon-details.tsx"
   },
   "dependencies": {
+    "@mfe-demo/api": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
